@@ -1,0 +1,2 @@
+openai==1.60.1
+pydantic==2.10.3
