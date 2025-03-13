@@ -1,17 +1,21 @@
 import smtplib
 from email.message import EmailMessage
 import os
+from dotenv import load_dotenv
 from openai import OpenAI
 import random
 from pydantic import BaseModel
 from textwrap import dedent
 
-# Set up environment variables
-KEY = os.getenv("OPENAI_API_KEY")
-URL = os.getenv("OPENAI_BASE_URL")
-SENDER = os.getenv("SENDER")
-RECEIVER = os.getenv("RECEIVER")
-PASSWORD = os.getenv("PASSWORD")
+if load_dotenv():
+    # Set up environment variables
+    KEY = os.getenv("OPENAI_API_KEY")
+    URL = os.getenv("OPENAI_BASE_URL")
+    SENDER = os.getenv("SENDER")
+    RECEIVER = os.getenv("RECEIVER")
+    PASSWORD = os.getenv("PASSWORD")
+else :
+    raise ValueError("Environment variables are not set")
 
 # Create OpenAI client
 client = OpenAI(
