@@ -83,4 +83,4 @@ Feel free to fork this repository, submit pull requests, or open issues for sugg
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
-For questions or feedback, reach out to [lihk0852@gmail.com].
+For questions or feedback, reach out to lihk0852@gmail.com.
