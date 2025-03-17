@@ -1,10 +1,8 @@
 name: Daily Question Task
 
 on:
-  workflow_dispatch:  # 手動觸發
   schedule:
-    - cron: '45 13 * * *' 
-    - cron: '40 21 * * *' 
+    - cron: '30 00 * * *' 
 
 jobs:
   run-daily-question:
