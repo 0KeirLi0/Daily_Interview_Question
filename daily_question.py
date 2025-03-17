@@ -14,7 +14,7 @@ if load_dotenv():
     SENDER = os.getenv("SENDER")
     RECEIVER = os.getenv("RECEIVER")
     PASSWORD = os.getenv("PASSWORD")
-else :
+else:
     raise ValueError("Environment variables are not set")
 
 # Create OpenAI client
