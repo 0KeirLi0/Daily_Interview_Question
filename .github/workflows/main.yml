@@ -3,7 +3,7 @@ name: Daily Question Task
 on:
   workflow_dispatch:  # 手動觸發
   schedule:
-    - cron: '30 12 * * *' 
+    - cron: '45 13 * * *' 
     - cron: '40 21 * * *' 
 
 jobs:
