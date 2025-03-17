@@ -49,7 +49,7 @@ Before running the script, ensure you have:
 ## Usage
 1. **Run the Script Manually**:
    ```bash
-   python daily_question.py
+   python main.py
    ```
    - This generates a question and sends it to the specified email, also logging it to `question_log.txt`.
 
@@ -57,12 +57,13 @@ Before running the script, ensure you have:
    - Use a scheduler like `cron` (Linux/macOS) or Task Scheduler (Windows) to run the script daily.
    - Example `cron` command (edit with `crontab -e`):
      ```bash
-     0 8 * * * /path/to/.venv/bin/python /path/to/daily_question.py
+     0 8 * * * /path/to/.venv/bin/python /path/to/main.py
      ```
    - Replace paths with your actual locations; this runs at 8 AM daily.
 
 ## File Structure
-- `daily_question.py`: The main Python script.
+- `main.py`: The main Python script.
+- `action_daily_question.py`: The Python script for github actions.
 - `env.example`: Sample environment variable file (fill your own in `.env`).
 - `requirements.txt`: List of Python dependencies.
 - `.gitignores`: Excludes sensitive or unnecessary files from Git.
@@ -72,8 +73,9 @@ Before running the script, ensure you have:
 ## Dependencies
 Listed in `requirements.txt`:
 ```
-openai==0.27.8
-python-dotenv==1.0.0
+openai==1.60.1
+pydantic==2.10.3
+python-dotenv==1.0.1
 ```
 
 ## Contributing
