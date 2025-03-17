@@ -160,3 +160,4 @@ cython_debug/
 #.idea/
 
 question_log.txt
+background.txt

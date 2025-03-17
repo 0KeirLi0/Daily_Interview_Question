@@ -25,7 +25,8 @@ client = OpenAI(
 
 # Define the format of the response
 class AnsFormmat(BaseModel):
-    behavioral_question: str   
+    behavioral_question: str  
+    suggested_framework: str
     sample_answer: str
     topic: str
 
@@ -41,9 +42,10 @@ topics = ["Motivation and Fit for Finance",
 def generate_behavioral_question(background: str):
     topic = random.choice(topics)
     prompt = f'''
-    Please generate 1 behavioral question related to the topic: {topic}.\n\n 
-    Provide sample answer based on user's background information(if any):\n\n{background}\n\n 
-    output in JSON format: behavioral_question, sample_answer, topic
+    1. Please generate 1 behavioral question related to the topic: {topic}.\n\n 
+    2. Provide suggested frammework for answering the question you asked\n\n
+    3. Provide sample answer based on user's background information(if any):\n\n{background}\n\n 
+    output in JSON format: behavioral_question, suggested_framework, sample_answer, topic
     '''
     try:
         response = client.beta.chat.completions.parse(
@@ -58,7 +60,7 @@ def generate_behavioral_question(background: str):
     except Exception as e:
         return f"Error when generating question：{str(e)}"
 
-def send_email(question, answer, topic):
+def send_email(question, suggested_framework, answer, topic):
     sender_email = SENDER
     receiver_email = RECEIVER
     password = PASSWORD
@@ -67,7 +69,7 @@ def send_email(question, answer, topic):
     msg["Subject"] = f"Daily Behavioral Questions:[{topic}]"
     msg["From"] = sender_email
     msg["To"] = receiver_email.split(",")
-    msg.set_content(f"Today's Question：{question} \n*\n*\n*\n*\n*\n*\n*\n*\n*\n*\n Sample Answer：{answer}")
+    msg.set_content(f"Today's Question：{question} \n******************* \n\n Suggested Framework: {suggested_framework}\n******************* \n*\n*\n*\n*\n*\n\n Sample Answer：{answer}")
     
     try:
         with smtplib.SMTP("smtp.gmail.com", 587) as server:
@@ -79,11 +81,18 @@ def send_email(question, answer, topic):
         print(f"Email sent failed：{str(e)}")
 
 def main():
-    response = generate_behavioral_question("NULL")
+    try:
+        with open('background.txt', 'r', encoding='utf-8') as file:
+            background = file.read()
+    except FileNotFoundError:
+        print("Background does not exist.")
+        background = "NULL"
+    response = generate_behavioral_question(background)
     question = str(response.behavioral_question)
+    suggested_framework = str(response.suggested_framework)
     sample_answer = str(response.sample_answer)
     topic = str(response.topic)
-    send_email(question, sample_answer, topic)
+    send_email(question, suggested_framework, sample_answer, topic)
     with open("question_log.txt", "a", encoding="utf-8") as f:
         f.write(f"********************************\n\nTopic: {topic}\nQuestion: {question}\nAnswer: {sample_answer}\n\n \n\n")
 
