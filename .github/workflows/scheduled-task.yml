@@ -1,8 +1,7 @@
 name: Daily Question Task
 
 on:
-  schedule:
-    - cron: '05 12 * * *'  
+  workflow_dispatch:  
 
 jobs:
   run-daily-question:
@@ -22,10 +21,10 @@ jobs:
 
       - name: Run action_daily_question.py
         env:
-          OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
-          OPENAI_BASE_URL=${{ secrets.OPENAI_BASE_URL }}
-          SENDER=${{ secrets.SENDER }}
-          PASSWORD=${{ secrets.PASSWORD }}
-          RECEIVER=${{ secrets.RECEIVER }}
-          BACKGROUND =${{ secrets.BACKGROUND }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+          SENDER: ${{ secrets.SENDER }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+          RECEIVER: ${{ secrets.RECEIVER }}
+          BACKGROUND: ${{ secrets.BACKGROUND }}
         run: python action_daily_question.py
