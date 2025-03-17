@@ -1,9 +1,8 @@
 name: Daily Question Task
 
 on:
-  workflow_dispatch:  
   schedule:
-    - cron: '30 12 * * *' 
+    - cron: '23 13 * * *' 
 
 jobs:
   run-daily-question:
