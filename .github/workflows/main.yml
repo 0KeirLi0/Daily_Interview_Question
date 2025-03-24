@@ -20,7 +20,7 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Run action_daily_question.py
+      - name: Run daily question
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
@@ -28,4 +28,4 @@ jobs:
           PASSWORD: ${{ secrets.PASSWORD }}
           RECEIVER: ${{ secrets.RECEIVER }}
           BACKGROUND: ${{ secrets.BACKGROUND }}
-        run: python action_daily_question.py
+        run: python -m src.actions.daily_question
