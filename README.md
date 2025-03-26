@@ -17,23 +17,30 @@
 
 ```
 Daily_Interview_Question/
-├── .github/
-│   ├── workflows/
-│   │   └── main.yml          # GitHub Actions workflow
-│   └── FUNDING.yml           
-├── src/
-│   ├── actions/
-│   │   └── daily_question.py # Script for GitHub Actions automation
-│   ├── utils/
-│   │   ├── email_sender.py   # Email sending module
-│   │   └── question_generator.py  # Question generation module
-│   └── main.py               # Local execution script
-├── .gitattributes            # Git attributes configuration
-├── .gitignore                # Git ignore file
-├── env.example               # Sample environment variables
-├── LICENSE                   # MIT License
-├── README.md                 # This file
-└── requirements.txt          # Python dependencies
+├─ .github/
+│  ├─ workflows/
+│  │  └─ main.yml                # GitHub Actions workflow
+│  └─ FUNDING.yml
+├─ src/
+│  ├─ actions/
+│  │  ├─ __init__.py
+│  │  └─ daily_question.py       # Script for GitHub Actions automation
+│  ├─ utils/
+│  │  ├─ __init__.py
+│  │  ├─ email_sender.py         # Email sending module
+│  │  └─ question_generator.py   # Question generation module
+│  └─ __init__.py
+├─ .env
+├─ .gitattributes                
+├─ .gitignore
+├─ background.txt
+├─ env.example                   # Sample environment variables
+├─ LICENSE
+├─ main.py                       # Local execution script
+├─ question_log.txt
+├─ README.md
+└─ requirements.txt
+
 ```
 
 ## Prerequisites
